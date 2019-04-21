@@ -9,6 +9,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color(0xFFFB415B),
+        fontFamily: 'Ubuntu',
       ),
       home: LoginPage(),
     );
@@ -21,6 +22,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool _isHidden = true;
+
+  void toggleVisibility() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(
                 fontSize: 50.0,
                 fontWeight: FontWeight.bold,
+                fontFamily: 'Pacifico',
               ),
             ),
             SizedBox(
@@ -120,11 +130,14 @@ class _LoginPageState extends State<LoginPage> {
         prefixIcon: hintText == 'Email' ? Icon(Icons.email) : Icon(Icons.lock),
         suffixIcon: hintText == 'Password'
             ? IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.visibility_off),
+                onPressed: toggleVisibility,
+                icon: _isHidden
+                    ? Icon(Icons.visibility_off)
+                    : Icon(Icons.visibility),
               )
-            : Container(),
+            : null,
       ),
+      obscureText: hintText == 'Password' ? _isHidden : false,
     );
   }
 
