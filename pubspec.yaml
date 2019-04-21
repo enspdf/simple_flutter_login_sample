@@ -57,6 +57,8 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   fonts:
     - family: Pacifico
-      fonts: assets/fonts/Pacifico-Regular.ttf
+      fonts: 
+        - asset: assets/fonts/Pacifico-Regular.ttf
     - family: Ubuntu
-      fonts: assets/fonts/Ubuntu-Regular.ttf
+      fonts: 
+        - asset: assets/fonts/Ubuntu-Regular.ttf
